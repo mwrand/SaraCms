@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SaraCms.CoreTests")]
+[assembly: AssemblyTitle("SaraCms.Data")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("SaraCms.CoreTests")]
+[assembly: AssemblyProduct("SaraCms.Data")]
 [assembly: AssemblyCopyright("Copyright © Randall Web Design 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5667fd81-4116-404d-afd7-2afb1de16b59")]
+[assembly: Guid("b7f01bb9-17ec-4aae-8a11-67dfd672fbd8")]
 
 // Version information for an assembly consists of the following four values:
 //
