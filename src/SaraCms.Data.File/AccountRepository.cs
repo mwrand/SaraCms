@@ -56,12 +56,12 @@ namespace SaraCms.Data.File
 
         private void Insert(Account obj)
         {
-            var accounts = GetFromFile();
-            var maxId = accounts.Max(p => p.Id);
+            var list = GetFromFile();
+            var maxId = list.Max(p => p.Id);
             obj.Id = maxId + 1;
-            accounts.Add(obj);
+            list.Add(obj);
 
-            File.WriteAllText(FilePath, JsonConvert.SerializeObject(accounts));
+            File.WriteAllText(FilePath, JsonConvert.SerializeObject(list));
         }
 
         private List<Account> GetFromFile()
@@ -76,9 +76,15 @@ namespace SaraCms.Data.File
             {
                 if (item.Id == obj.Id)
                 {
+                    item.CreatedBy = obj.CreatedBy;
+                    item.CreatedDate = obj.CreatedDate;
                     item.Email = obj.Email;
                     item.FirstName = obj.FirstName;
                     item.LastName = obj.LastName;
+                    item.RoleId = obj.RoleId;
+                    item.UpdatedBy = obj.UpdatedBy;
+                    item.UpdatedDate = obj.UpdatedDate;
+                    item.UserName = obj.UserName;
                 }
             }
 

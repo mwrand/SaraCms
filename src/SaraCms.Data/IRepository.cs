@@ -13,12 +13,7 @@
 // ***********************************************************************
 namespace SaraCms.Data
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using SaraCms.Models;
     public interface IRepository<T>
     {
         void Delete(int id);

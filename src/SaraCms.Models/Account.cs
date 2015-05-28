@@ -6,7 +6,7 @@
 // Last Modified By : Michael Randall
 // Last Modified On : 05-28-2015
 // ***********************************************************************
-// <copyright file="Account.cs" company="Microsoft">
+// <copyright file="Account.cs" company="Randall Web Design">
 //     Copyright © Randall Web Design 2015
 // </copyright>
 // <summary></summary>
@@ -25,9 +25,9 @@ namespace SaraCms.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public int RoleId { get; set; }
         public string UpdatedBy { get; set; }
         public DateTime UpdatedDate { get; set; }
         public string UserName { get; set; }
-
     }
 }

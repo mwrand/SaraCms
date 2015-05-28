@@ -29,7 +29,7 @@ namespace SaraCms.Core.IntTests.AccountTests
         [Fact]
         public void DeletePage_VerifyCount()
         {
-            var service = GetPageService();
+            var service = GetAccountService();
             var beforeDeleteList = service.GetAll();
 
             service.Delete(1);
@@ -44,7 +44,7 @@ namespace SaraCms.Core.IntTests.AccountTests
         public void Get_Page_Assert_With_Id1()
         {
             var id = 1;
-            var service = GetPageService();
+            var service = GetAccountService();
             var page = service.Get(id);
 
             Assert.Equal<int>(id, page.Id);
@@ -54,7 +54,7 @@ namespace SaraCms.Core.IntTests.AccountTests
         public void Get_Page_Assert_With_Id2()
         {
             var id = 2;
-            var service = GetPageService();
+            var service = GetAccountService();
             var page = service.Get(id);
 
             Assert.Equal<int>(2, page.Id);
@@ -63,7 +63,7 @@ namespace SaraCms.Core.IntTests.AccountTests
         [Fact]
         public void GetAll_Pages()
         {
-            var service = GetPageService();
+            var service = GetAccountService();
             var pageList = service.GetAll();
 
             Assert.Equal<int>(3, pageList.Count);
@@ -72,19 +72,22 @@ namespace SaraCms.Core.IntTests.AccountTests
         [Fact]
         public void SavePage_Insert_Verify()
         {
-            var service = GetPageService();
+            var service = GetAccountService();
             var beforeInsertList = service.GetAll();
             var now = DateTime.UtcNow;
 
-            var page = new Page
+            var acct = new Account
             {
-                Content = "<div>Test Content</div>",
-                CreatedBy = "Test Runner",
-                CreatedDate = now,
-                Name = "Test Page"
+                Email = "newe@emids.com",
+                FirstName = "New",
+                LastName = "Employee",
+                RoleId = 3,
+                UpdatedBy = "Test Runner",
+                UpdatedDate = DateTime.UtcNow,
+                UserName = "newe"
             };
 
-            service.Save(page);
+            service.Save(acct);
             var afterSaveList = service.GetAll();
 
             Assert.Equal<int>(afterSaveList.Count, beforeInsertList.Count + 1);
@@ -95,48 +98,54 @@ namespace SaraCms.Core.IntTests.AccountTests
             Assert.Equal<int>(afterSaveList.Count, maxId);
 
             var actualItem = afterSaveList.SingleOrDefault(p => p.Id == maxId);
-            Assert.Equal<string>(page.Name, actualItem.Name);
-            Assert.Equal<string>(page.Content, actualItem.Content);
-            Assert.Equal<string>(page.CreatedBy, actualItem.CreatedBy);
-            Assert.Equal<DateTime>(page.CreatedDate, actualItem.CreatedDate);
+            Assert.Equal<string>(acct.Email, actualItem.Email);
+            Assert.Equal<string>(acct.FirstName, actualItem.FirstName);
+            Assert.Equal<string>(acct.LastName, actualItem.LastName);
+            Assert.Equal<string>(acct.UserName, actualItem.UserName);
             ResetJsonFile(beforeInsertList);
         }
 
         [Fact]
         public void SavePage_Update_Verify()
         {
-            var service = GetPageService();
+            var service = GetAccountService();
             var beforeUpdateList = service.GetAll();
 
-            var page = new Page
+            var acct = new Account
             {
                 Id = 1,
-                Name = "Update Test Page",
-                Content = "<div>Update Test Content</div>",
+                Email = "newe@emids.com",
+                FirstName = "New",
+                LastName = "Employee",
+                RoleId = 4,
                 UpdatedBy = "Test Runner",
                 UpdatedDate = DateTime.UtcNow,
+                UserName = "newe"
             };
 
-            service.Save(page);
+            service.Save(acct);
             var afterSaveList = service.GetAll();
 
             Assert.Equal<int>(afterSaveList.Count, beforeUpdateList.Count);
 
-            var afterUpdateRecord = beforeUpdateList.Single(p => p.Id == 1);
+            var afterUpdateRecord = afterSaveList.Single(p => p.Id == 1);
 
-            Assert.Equal<string>(page.Name, afterUpdateRecord.Name);
-            Assert.Equal<string>(page.Content, afterUpdateRecord.Content);
+            Assert.Equal<string>(acct.Email, afterUpdateRecord.Email);
+            Assert.Equal<string>(acct.FirstName, afterUpdateRecord.FirstName);
+            Assert.Equal<string>(acct.LastName, afterUpdateRecord.LastName);
+            Assert.Equal<int>(acct.RoleId, afterUpdateRecord.RoleId);
+            Assert.Equal<string>(acct.UserName, afterUpdateRecord.UserName);
 
             ResetJsonFile(beforeUpdateList);
         }
 
-        private Pages.PageService GetPageService()
+        private Accounts.AccountService GetAccountService()
         {
-            var fileService = new PageRepository(_FilePath);
-            return new Pages.PageService(fileService);
+            var fileService = new AccountRepository(_FilePath);
+            return new Accounts.AccountService(fileService);
         }
 
-        private void ResetJsonFile(List<Page> list)
+        private void ResetJsonFile(List<Account> list)
         {
             File.WriteAllText(_FilePath, JsonConvert.SerializeObject(list));
         }

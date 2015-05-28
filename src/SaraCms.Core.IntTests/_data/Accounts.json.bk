@@ -1,17 +1,32 @@
 [
     {
+        "CreatedBy": "Michael Randall",
+        "CreatedDate": "2015-05-08T13:25:43.511Z",
+        "Email": "michaelr@emids.com",
         "Id": 1,
-        "Name": "About",
-        "Content": "<div>Some content about us</div>"
+        "FirstName": "Michael",
+        "LastName": "Randall",
+        "RoleId": "2",
+	"UserName": "michaelr"
     },
     {
+        "CreatedBy": "Michael Randall",
+        "CreatedDate": "2015-05-08T13:25:43.511Z",
+        "Email": "davidp@emids.com",
         "Id": 2,
-        "Name": "Contact",
-        "Content": "<div>Here is how to contact us:</div>"
+        "FirstName": "David",
+        "LastName": "Perry",
+        "RoleId": "3",
+	"UserName": "davidp"
     },
     {
+        "CreatedBy": "Michael Randall",
+        "CreatedDate": "2015-05-08T13:25:43.511Z",
+        "Email": "christyv@emids.com",
         "Id": 3,
-        "Name": "Home",
-        "Content": "<div>Here is our site!</div>"
+        "FirstName": "Christy",
+        "LastName": "veitch",
+        "RoleId": "1",
+	"UserName": "christyv"
     }
 ]
