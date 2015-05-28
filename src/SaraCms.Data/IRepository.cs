@@ -19,14 +19,14 @@ namespace SaraCms.Data
     using System.Text;
     using System.Threading.Tasks;
     using SaraCms.Models;
-    public interface IDataService
+    public interface IRepository<T>
     {
         void Delete(int id);
 
-        Page Get(int id);
+        T Get(int id);
 
-        List<Page> GetAll();
+        List<T> GetAll();
 
-        void Save(Page obj);
+        void Save(T obj);
     }
 }

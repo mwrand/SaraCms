@@ -1,0 +1,17 @@
+[
+    {
+        "Id": 1,
+        "Name": "About",
+        "Content": "<div>Some content about us</div>"
+    },
+    {
+        "Id": 2,
+        "Name": "Contact",
+        "Content": "<div>Here is how to contact us:</div>"
+    },
+    {
+        "Id": 3,
+        "Name": "Home",
+        "Content": "<div>Here is our site!</div>"
+    }
+]
