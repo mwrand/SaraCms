@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SaraCms.Core.IntTests")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Integration tests for core project")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("Randall Web Design")]
 [assembly: AssemblyProduct("SaraCms.Core.IntTests")]
 [assembly: AssemblyCopyright("Copyright © Randall Web Design 2015")]
 [assembly: AssemblyTrademark("")]

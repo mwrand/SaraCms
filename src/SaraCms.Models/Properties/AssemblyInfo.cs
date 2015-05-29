@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SaraCms.Models")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("Randall Web Design")]
 [assembly: AssemblyProduct("SaraCms.Models")]
 [assembly: AssemblyCopyright("Copyright © Randall Web Design 2015")]
 [assembly: AssemblyTrademark("")]
