@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net46": {
+      "wrappedProject": "../../SaraCms.Data.csproj",
+      "bin": {
+        "assembly": "../../obj/{configuration}/SaraCms.Data.dll",
+        "pdb": "../../obj/{configuration}/SaraCms.Data.pdb"
+      },
+      "dependencies": {
+        "SaraCms.Models": "1.0.0-*"
+      }
+    }
+  }
+}
