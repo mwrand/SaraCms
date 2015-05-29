@@ -28,7 +28,7 @@ namespace SaraCms.CoreTests.Pages
         [Fact]
         public void Get_Page_Does_Not_Return_Null()
         {
-            var mockDataService = MockRepository.Mock<IDataService>();
+            var mockDataService = MockRepository.Mock<IRepository<Page>>();
             var service = new Core.Pages.PageService(mockDataService);
             var page = service.Get(1);
             mockDataService.AssertWasCalled(x => x.Get(Arg<int>.Is.NotNull));
@@ -39,7 +39,7 @@ namespace SaraCms.CoreTests.Pages
         {
             var id =1;
 
-            var mockDataService = MockRepository.Mock<IDataService>();
+            var mockDataService = MockRepository.Mock<IRepository<Page>>();
 
             mockDataService.Expect(d => d.Get(id));
 

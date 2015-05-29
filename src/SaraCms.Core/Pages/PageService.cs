@@ -23,32 +23,32 @@ namespace SaraCms.Core.Pages
 
     public class PageService
     {
-        private readonly IDataService _dataService;
+        private readonly IRepository<Page> _repository;
 
-        public PageService(IDataService dataService)
+        public PageService(IRepository<Page> repository)
         {
-            _dataService = dataService;
+            _repository = repository;
         }
         
         public void Delete(int id)
         {
-            _dataService.Delete(id);
+            _repository.Delete(id);
         }
         
         public Page Get(int id)
         {
-            var page = _dataService.Get(id);
+            var page = _repository.Get(id);
             return page;
         }
         
         public List<Page> GetAll()
         {
-            return _dataService.GetAll();
+            return _repository.GetAll();
         }
         
         public void Save(Page page)
         {
-            _dataService.Save(page);
+            _repository.Save(page);
         }
     }
 }

@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileService.cs" />
+    <Compile Include="RoleRepository.cs" />
+    <Compile Include="AccountRepository.cs" />
+    <Compile Include="PageRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

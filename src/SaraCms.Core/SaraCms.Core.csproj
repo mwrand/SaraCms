@@ -41,12 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accounts\RoleService.cs" />
+    <Compile Include="Accounts\AccountService.cs" />
     <Compile Include="Pages\PageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SaraCms.Data\SaraCms.Data.csproj">
       <Project>{b7f01bb9-17ec-4aae-8a11-67dfd672fbd8}</Project>

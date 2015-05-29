@@ -11,20 +11,18 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace SaraCms.Core.IntTests
+namespace SaraCms.Core.IntTests.PageTests
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Xunit;
     using Data.File;
     using Models;
     using Newtonsoft.Json;
 
-    public class PageTests
+    public class CrudTests
     {
         private string _FilePath = @"C:\dev\SaraCms\SaraCms\src\SaraCms.Core.IntTests\_data\Pages.json";
 
@@ -37,7 +35,7 @@ namespace SaraCms.Core.IntTests
             service.Delete(1);
             var afterDeleteList = service.GetAll();
 
-            Assert.Equal<int>(afterDeleteList.Count, beforeDeleteList.Count -1);
+            Assert.Equal<int>(afterDeleteList.Count, beforeDeleteList.Count - 1);
 
             ResetJsonFile(beforeDeleteList);
         }
@@ -76,14 +74,31 @@ namespace SaraCms.Core.IntTests
         {
             var service = GetPageService();
             var beforeInsertList = service.GetAll();
+            var now = DateTime.UtcNow;
 
-            var page = new Page { Name = "Test Page", Content = "<div>Test Content</div>" };
+            var page = new Page
+            {
+                Content = "<div>Test Content</div>",
+                CreatedBy = "Test Runner",
+                CreatedDate = now,
+                Name = "Test Page"
+            };
 
             service.Save(page);
             var afterSaveList = service.GetAll();
 
             Assert.Equal<int>(afterSaveList.Count, beforeInsertList.Count + 1);
 
+            var expectedId = afterSaveList.Count + 1;
+            var maxId = afterSaveList.Max(p => p.Id);
+
+            Assert.Equal<int>(afterSaveList.Count, maxId);
+
+            var actualItem = afterSaveList.SingleOrDefault(p => p.Id == maxId);
+            Assert.Equal<string>(page.Name, actualItem.Name);
+            Assert.Equal<string>(page.Content, actualItem.Content);
+            Assert.Equal<string>(page.CreatedBy, actualItem.CreatedBy);
+            Assert.Equal<DateTime>(page.CreatedDate, actualItem.CreatedDate);
             ResetJsonFile(beforeInsertList);
         }
 
@@ -93,13 +108,20 @@ namespace SaraCms.Core.IntTests
             var service = GetPageService();
             var beforeUpdateList = service.GetAll();
 
-            var page = new Page { Id = 1, Name = "Update Test Page", Content = "<div>Update Test Content</div>" };
+            var page = new Page
+            {
+                Id = 1,
+                Name = "Update Test Page",
+                Content = "<div>Update Test Content</div>",
+                UpdatedBy = "Test Runner",
+                UpdatedDate = DateTime.UtcNow,
+            };
 
             service.Save(page);
             var afterSaveList = service.GetAll();
 
             Assert.Equal<int>(afterSaveList.Count, beforeUpdateList.Count);
-            
+
             var afterUpdateRecord = beforeUpdateList.Single(p => p.Id == 1);
 
             Assert.Equal<string>(page.Name, afterUpdateRecord.Name);
@@ -110,7 +132,7 @@ namespace SaraCms.Core.IntTests
 
         private Pages.PageService GetPageService()
         {
-            var fileService = new FileService(_FilePath);
+            var fileService = new PageRepository(_FilePath);
             return new Pages.PageService(fileService);
         }
 
