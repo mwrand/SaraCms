@@ -13,33 +13,26 @@
 // ***********************************************************************
 namespace SaraCms.Api.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Net;
-    using System.Net.Http;
-    using System.Threading.Tasks;
     using System.Web.Http;
+    using SaraCms.Models;
+    using SaraCms.Models.Pages;
+    using SaraCms.Models.ViewModels;
+    using Core.Pages;
+    using Data.File;
 
     [RoutePrefix("api/Page")]
-    public class PageController : ApiController
+    public class PageController : BaseController
     {
         [Route("Delete")]
-        public async Task<IHttpActionResult> DeletePage(DeletePageBindingModel model)
+        public Result<bool> DeletePage(DeletePageRequestModel model)
         {
-            if (!ModelState.IsValid)
+            new PageService(new PageRepository(string.Empty)).Delete(model.PageId);
+            return new Result<bool>
             {
-                return BadRequest(ModelState);
-            }
-
-            IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
-
-            if (!result.Succeeded)
-            {
-                return GetErrorResult(result);
-            }
-
-            return Ok();
+                Data = true,
+                Hyperlink = GetHyperlink(),
+                Validation = Validation.GetSuccessValidation()
+            };
         }
     }
 }

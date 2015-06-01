@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaraCms.Api", "SaraCms.Api\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaraCms.Api.Tests", "SaraCms.Api.Tests\SaraCms.Api.Tests.csproj", "{C2738B35-7AD8-4273-8D1C-58A1D5E4EB0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaraCms.Lib", "SaraCms.Lib\SaraCms.Lib.csproj", "{5CCC8F36-978B-40EB-987E-0C13230686AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{C2738B35-7AD8-4273-8D1C-58A1D5E4EB0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2738B35-7AD8-4273-8D1C-58A1D5E4EB0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2738B35-7AD8-4273-8D1C-58A1D5E4EB0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CCC8F36-978B-40EB-987E-0C13230686AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CCC8F36-978B-40EB-987E-0C13230686AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CCC8F36-978B-40EB-987E-0C13230686AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CCC8F36-978B-40EB-987E-0C13230686AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

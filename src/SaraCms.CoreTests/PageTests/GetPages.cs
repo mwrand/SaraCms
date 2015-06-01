@@ -14,14 +14,8 @@
 namespace SaraCms.CoreTests.Pages
 {
     using Data;
-    using Rhino;
+    using Models;
     using Rhino.Mocks;
-    using SaraCms.Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Xunit;
     public class PageTests
     {
@@ -32,6 +26,7 @@ namespace SaraCms.CoreTests.Pages
             var service = new Core.Pages.PageService(mockDataService);
             var page = service.Get(1);
             mockDataService.AssertWasCalled(x => x.Get(Arg<int>.Is.NotNull));
+            
         }
 
         [Fact]
