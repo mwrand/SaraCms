@@ -17,7 +17,9 @@ namespace SaraCms.Api.Controllers
     using Model.ViewModels;
     using SaraCms.Models.ViewModels;
     using System.Web;
-    public class BaseController
+    using System.Web.Http;
+
+    public class BaseController : ApiController
     {
         protected IApplicationModel ApplicationModel { get; set; }
 

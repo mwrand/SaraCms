@@ -59,6 +59,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SaraCms.Data.File\SaraCms.Data.File.csproj">
+      <Project>{d22b9178-ae86-45ac-9e88-24cbf9de87e1}</Project>
+      <Name>SaraCms.Data.File</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SaraCms.Data\SaraCms.Data.csproj">
       <Project>{b7f01bb9-17ec-4aae-8a11-67dfd672fbd8}</Project>
       <Name>SaraCms.Data</Name>

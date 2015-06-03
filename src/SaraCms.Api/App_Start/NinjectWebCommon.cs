@@ -17,13 +17,14 @@
 namespace SaraCms.Api.App_Start
 {
     using Code;
-    using Lib;
+    using Data.File;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using Ninject;
-    using Ninject.Modules;
     using Ninject.Web.Common;
+    using SaraCms.Models.ViewModels;
     using System;
     using System.Web;
+    using System.Web.Http;
 
     public static class NinjectWebCommon
     {
@@ -58,7 +59,7 @@ namespace SaraCms.Api.App_Start
                 RegisterServices(kernel);
 
                 // Install our Ninject-based IDependencyResolver into the Web API config
-                //GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
+                GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
                 return kernel;
             }
             catch
@@ -71,10 +72,9 @@ namespace SaraCms.Api.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             //kernel.Bind<IApiManagerModel>().To<ApiManagerModel>().InRequestScope();
-            //kernel.Bind<IApplicationModel>().To<ApplicationModel>().InSingletonScope()
-            //    .WithConstructorArgument("settings", Settings.GetApplicationSettings());
-            //kernel.Bind<IFlashService>().To<FlashService>().InRequestScope();
-            
+            kernel.Bind<IApplicationSettings>().To<ApplicationSettings>().InSingletonScope()
+                .WithConstructorArgument("settings", Settings.GetApplicationSettings());
+            kernel.Bind<IPageRepository>().To<PageRepository>().InRequestScope();
         }
     }
 }

@@ -23,9 +23,9 @@ namespace SaraCms.Models
         
         public validationCodes Code { get; set; }
         
-        public static Validation GetSuccessValidation()
+        public static Validation GetSuccessValidation(string message = "")
         {
-            return new Validation { IsValid = true, Message = string.Empty, Code = validationCodes.Success };
+            return new Validation { IsValid = true, Message = message, Code = validationCodes.Success };
         }
     }
 }

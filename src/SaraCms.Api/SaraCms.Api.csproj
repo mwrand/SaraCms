@@ -232,10 +232,11 @@
     <Compile Include="Code\ControllerSelector.cs" />
     <Compile Include="Code\MessageHandler.cs" />
     <Compile Include="Code\RequestDetail.cs" />
+    <Compile Include="Code\Settings.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Controllers\Page\V0.5\PageController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Filters\ModelValidationAttribute.cs" />
     <Compile Include="Global.asax.cs">

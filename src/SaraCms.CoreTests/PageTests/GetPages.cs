@@ -17,12 +17,14 @@ namespace SaraCms.CoreTests.Pages
     using Models;
     using Rhino.Mocks;
     using Xunit;
+    using Data.File;
+
     public class PageTests
     {
         [Fact]
         public void Get_Page_Does_Not_Return_Null()
         {
-            var mockDataService = MockRepository.Mock<IRepository<Page>>();
+            var mockDataService = MockRepository.Mock<IPageRepository>();
             var service = new Core.Pages.PageService(mockDataService);
             var page = service.Get(1);
             mockDataService.AssertWasCalled(x => x.Get(Arg<int>.Is.NotNull));
@@ -34,7 +36,7 @@ namespace SaraCms.CoreTests.Pages
         {
             var id =1;
 
-            var mockDataService = MockRepository.Mock<IRepository<Page>>();
+            var mockDataService = MockRepository.Mock<IPageRepository>();
 
             mockDataService.Expect(d => d.Get(id));
 

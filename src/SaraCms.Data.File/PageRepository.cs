@@ -16,16 +16,17 @@ namespace SaraCms.Data.File
     using Data;
     using Models;
     using Newtonsoft.Json;
+    using SaraCms.Models.ViewModels;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    public class PageRepository : IRepository<Page>
+    public class PageRepository : IPageRepository
     {
         private readonly string FilePath;
         
-        public PageRepository(string filePath)
+        public PageRepository(IApplicationSettings settings)
         {
-            FilePath = filePath;
+            FilePath = settings.FileRepositoryFolderPath + "Pages.json";
         }
 
         public void Delete(int id)

@@ -15,6 +15,7 @@ namespace SaraCms.Core.Pages
 {
     using Data;
     using Models;
+    using SaraCms.Data.File;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -23,9 +24,9 @@ namespace SaraCms.Core.Pages
 
     public class PageService
     {
-        private readonly IRepository<Page> _repository;
+        private readonly IPageRepository _repository;
 
-        public PageService(IRepository<Page> repository)
+        public PageService(IPageRepository repository)
         {
             _repository = repository;
         }

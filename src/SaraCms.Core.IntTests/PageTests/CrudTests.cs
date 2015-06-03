@@ -13,18 +13,24 @@
 // ***********************************************************************
 namespace SaraCms.Core.IntTests.PageTests
 {
+    using Data.File;
+    using Models;
+    using Models.ViewModels;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
     using Xunit;
-    using Data.File;
-    using Models;
-    using Newtonsoft.Json;
+    using System.Linq;
 
     public class CrudTests
     {
-        private string _FilePath = @"C:\dev\SaraCms\SaraCms\src\SaraCms.Core.IntTests\_data\Pages.json";
+        private string _FolderPath = @"C:\dev\SaraCms\SaraCms\src\SaraCms.Core.IntTests\_data\";
+        
+        private string FilePath
+        {
+            get { return _FolderPath + "Pages.json"; }
+        }
 
         [Fact]
         public void DeletePage_VerifyCount()
@@ -132,13 +138,14 @@ namespace SaraCms.Core.IntTests.PageTests
 
         private Pages.PageService GetPageService()
         {
-            var fileService = new PageRepository(_FilePath);
+            var settings = new ApplicationSettings { FileRepositoryFolderPath  = _FolderPath };
+            var fileService = new PageRepository(settings);
             return new Pages.PageService(fileService);
         }
 
         private void ResetJsonFile(List<Page> list)
         {
-            File.WriteAllText(_FilePath, JsonConvert.SerializeObject(list));
+            File.WriteAllText(FilePath, JsonConvert.SerializeObject(list));
         }
     }
 }

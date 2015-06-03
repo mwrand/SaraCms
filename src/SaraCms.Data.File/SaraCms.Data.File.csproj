@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPageRepository.cs" />
     <Compile Include="RoleRepository.cs" />
     <Compile Include="AccountRepository.cs" />
     <Compile Include="PageRepository.cs" />

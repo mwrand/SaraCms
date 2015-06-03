@@ -1,24 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Http;
-using System.Web.Http.ModelBinding;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.OAuth;
-using SaraCms.Api.Models;
-using SaraCms.Api.Providers;
-using SaraCms.Api.Results;
-
+﻿// ***********************************************************************
+// Assembly         : SaraCms.Api
+// Author           : Michael Randall
+// Created          : 05-29-2015
+//
+// Last Modified By : Michael Randall
+// Last Modified On : 05-29-2015
+// ***********************************************************************
+// <copyright file="AccountController.cs" company="Randall Web Design">
+//     Copyright © Randall Web Design 2015
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 namespace SaraCms.Api.Controllers
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using Microsoft.Owin.Security.Cookies;
+    using Microsoft.Owin.Security.OAuth;
+    using Models;
+    using Providers;
+    using Results;
+    using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Security.Claims;
+    using System.Security.Cryptography;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Http;
+
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
@@ -125,7 +137,7 @@ namespace SaraCms.Api.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -258,9 +270,9 @@ namespace SaraCms.Api.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -368,7 +380,7 @@ namespace SaraCms.Api.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }
